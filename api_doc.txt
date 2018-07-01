@@ -1,0 +1,68 @@
+pycloaking
+----------
+
+def cloak_file(in_password,
+               in_filename,
+               out_filename,
+               chunksize=64*1024):
+    """
+    Encrypts a file using AES (CBC mode) with
+    a key produced from the given password.
+
+    Parameters:
+        in_password:
+            This password is securely hashed to produce a 32-byte digest.
+            The digest is used as the AES256 key.
+
+        in_filename:
+            Path name of the input cleartext file
+
+        out_filename:
+            Path name of output ciphertext file.
+
+        chunksize:
+            Sets the size of the read-file chunk which is
+            used to read and encrypt the file.
+            Larger chunk sizes can be faster for some files and machines.
+            The chunksize must be divisible by 16.
+            Default value: 64k.
+
+    Returns:
+        Elapsed time in seconds
+
+    Raises:
+        ValueError if chunksize mod 16 != 0
+        IOError if something is wrong with the input or output file
+    """
+
+def uncloak_file(in_password,
+                 in_filename,
+                 out_filename,
+                 chunksize=24*1024):
+    """
+    Decrypts a file using AES (CBC mode) with
+    a key produced from the given password.
+
+    Parameters:
+        in_password:
+            Same description as for cloak_file.
+
+        in_filename:
+            Path name of the input ciphertext file
+
+        out_filename:
+            Path name of output cleartext file.
+
+        chunksize:
+            Same description as for cloak_file..
+
+    Returns:
+        Elapsed time in seconds
+
+    Raises:
+        ValueError if chunksize mod 16 != 0
+        IOError if something is wrong with the input or output file
+        UserWarning if the input file was not created with cloak_file()
+            or is corrupted
+    """
+
