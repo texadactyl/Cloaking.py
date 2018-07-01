@@ -2,16 +2,16 @@ OVERVIEW
 
 This project constitutes a "File Cloaking Utility" that provides password-based security of a single file or a single file system archive file (E.g. .tar.gz). The utility is probably most useful in the following situations:
 
-    Storing backups of sensitive information on the Internet
-    Transporting sensitive information electronically (E.g. email) or manually (E.g. using a flash drive)
+* Storing backups of sensitive information on the Internet
+* Transporting sensitive information electronically (E.g. email) or manually (E.g. using a flash drive)
 
 The source code is based on pycrypto, using:
 
-    Password-based Key Derivation Function version 2 (PBKDF2)
-    AES256 data cryptography in Cipher-Block Chaining (CBC) mode
-    Hash-based Message Authentication Code (HMAC) function SHA512
+* Password-based Key Derivation Function version 2 (PBKDF2)
+* AES256 data cryptography in Cipher-Block Chaining (CBC) mode
+* Hash-based Message Authentication Code (HMAC) function SHA512
 
-The project code is based on an example by Eli Bendersky (used as a starting point).
+The project code is based on an example by Eli Bendersky (used as a starting point):
 https://eli.thegreenplace.net/2010/06/25/aes-encryption-of-files-in-python-with-pycrypto/
 
 Pycrypto reference: https://www.dlitz.net/software/pycrypto/
