@@ -16,6 +16,10 @@ https://eli.thegreenplace.net/2010/06/25/aes-encryption-of-files-in-python-with-
 
 Pycrypto reference: https://www.dlitz.net/software/pycrypto/
 
+#### REQUIREMENTS
+
+* pycrypto
+
 #### LICENSING
 
 This is NOT commercial software; instead, usage is covered by the GNU General Public License version 3 (2007). In a nutshell, please feel free to use the project and share it as you will but please don't sell it. Thank you!
