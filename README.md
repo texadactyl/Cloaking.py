@@ -5,7 +5,7 @@ This project constitutes a file cloaking utility that provides password-based se
 * Storing backups of sensitive information on the Internet
 * Transporting sensitive information electronically (E.g. email) or manually (E.g. using a flash drive)
 
-The source code is based on pycrypto, using:
+The Python source code is based on pycrypto, using:
 
 * Password-based Key Derivation Function version 2 (PBKDF2)
 * AES256 data cryptography in Cipher-Block Chaining (CBC) mode
