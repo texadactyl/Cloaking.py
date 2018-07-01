@@ -2,7 +2,7 @@
 The following code provides a password-based security of a single file or
 a single file system archive file (E.g. .tar.gz).
 
-The source code is based on pycrypto, using the following functions:
+The source code is based on pycrypto, using the following capabilities:
 
     Password-based Key Derivation Function version 2 (PBKDF2)
     AES256 data cryptography in Cipher-Block Chaining (CBC) mode
