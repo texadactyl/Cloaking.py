@@ -1,4 +1,4 @@
-OVERVIEW
+#### OVERVIEW
 
 This project constitutes a file cloaking utility that provides password-based security of a single file or a single file system archive file (E.g. .tar.gz). The utility is probably most useful in the following situations:
 
@@ -16,13 +16,13 @@ https://eli.thegreenplace.net/2010/06/25/aes-encryption-of-files-in-python-with-
 
 Pycrypto reference: https://www.dlitz.net/software/pycrypto/
 
-LICENSING
+#### LICENSING
 
 This is NOT commercial software; instead, usage is covered by the GNU General Public License version 3 (2007). In a nutshell, please feel free to use the project and share it as you will but please don't sell it. Thank you!
 
 See the LICENSE file for the GNU licensing information.
 
-SAMPLE CALLING PROGRAM
+#### SAMPLE CALLING PROGRAM
 
     import pycloaking
 
@@ -43,7 +43,7 @@ SAMPLE CALLING PROGRAM
 
 The API is explained in api_doc.txt.
 
-CIPHERTEXT ANATOMY
+#### CIPHERTEXT ANATOMY
 
 The ciphertext file created by cloak_file() has the following layout:
 
