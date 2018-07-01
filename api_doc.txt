@@ -38,7 +38,7 @@ def cloak_file(in_password,
 def uncloak_file(in_password,
                  in_filename,
                  out_filename,
-                 chunksize=24*1024):
+                 chunksize=64*1024):
     """
     Decrypts a file using AES (CBC mode) with
     a key produced from the given password.
