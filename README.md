@@ -28,8 +28,8 @@ See the LICENSE file for the GNU licensing information.
 
 #### SAMPLE CALLING PROGRAM
 
-    import pycloaking
-
+    from pycloaking import cloak_file, uncloak_file
+    from os.path import getsize
     PASSWORD = "Mary Had a Little Lamb"
     CLEARTEXT_FILE_1 = "/etc/hosts"
     CIPHERTEXT_FILE = "/tmp/cloaked"
