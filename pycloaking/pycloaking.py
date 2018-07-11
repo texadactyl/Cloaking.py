@@ -8,7 +8,7 @@ The source code is dependent on pycrypto, using the following capabilities:
     AES256 data cryptography in Cipher-Block Chaining (CBC) mode
     Hash-based Message Authentication Code (HMAC) function SHA512
 
-This code is based on an example by Eli Bendersky (used as a starting point).
+The starting point of this code is an example by Eli Bendersky.
 https://eli.thegreenplace.net/2010/06/25/aes-encryption-of-files-in-python-with-pycrypto/
 
 Pycrypto reference: https://www.dlitz.net/software/pycrypto/
