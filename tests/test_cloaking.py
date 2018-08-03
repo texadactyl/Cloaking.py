@@ -1,5 +1,5 @@
 from os.path import getsize
-from pycloaking import *
+from pycloaking import cloak_file, uncloak_file
 
 if __name__ == "__main__": # stand-alone self-imposed test
 
@@ -17,3 +17,4 @@ if __name__ == "__main__": # stand-alone self-imposed test
     print("Cloaked file size:", cloakedsize)
     filesize2 = getsize(CLEARTEXT_FILE_2)
     print("Uncloaked file size:", filesize2)
+    assert filesize1 == filesize2
