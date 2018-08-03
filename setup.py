@@ -7,7 +7,9 @@ setup(
     author="Richard Elkins",
     author_email="richard.elkinsr@gmail.com",
     description="Cloak/Uncloak Sensitive Files",
-    long_description=open('README.md').read(),
+    long_description=open("README.md").read(),
     packages=find_packages(),
-	install_requires=['pycrypto'],
+    setup_requires=["pytest-runner"],
+    tests_require=["pytest"],
+	install_requires=["pycrypto"],
 )
