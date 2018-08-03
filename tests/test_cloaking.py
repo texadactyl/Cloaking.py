@@ -43,7 +43,7 @@ def try_cloaking(arg_path):
     remove(CIPHERTEXT_FILE)
     remove(CLEARTEXT_FILE_2)
 
-if __name__ == "__main__": # stand-alone test
+def test_all():
     path_cleartext = CLEARTEXT_FILE_1
     byte_countdown = CLEAR_FILE_SIZE
     with open(path_cleartext, 'wb') as outfile:
@@ -57,3 +57,7 @@ if __name__ == "__main__": # stand-alone test
             byte_countdown -= write_size
     try_cloaking(path_cleartext)
     remove(CLEARTEXT_FILE_1)
+
+if __name__ == "__main__": # stand-alone main program
+    test_all()
+
