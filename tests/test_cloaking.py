@@ -4,8 +4,6 @@ from pycloaking import *
 if __name__ == "__main__": # stand-alone self-imposed test
 
     PASSWORD = "Mary Had a Little Lamb"
-    CLEARTEXT_FILE_1 = "/tmp/nil"
-    CLEARTEXT_FILE_1 = "/etc/hosts"
     CLEARTEXT_FILE_1 = "/usr/bin/pandoc"
     CIPHERTEXT_FILE = "/tmp/cloaked"
     CLEARTEXT_FILE_2 = "/tmp/uncloaked.txt"
@@ -19,4 +17,3 @@ if __name__ == "__main__": # stand-alone self-imposed test
     print("Cloaked file size:", cloakedsize)
     filesize2 = getsize(CLEARTEXT_FILE_2)
     print("Uncloaked file size:", filesize2)
-
