@@ -1,4 +1,6 @@
+__pycache__
+.eggs
+.pytest_cache
 *.pyc
 *.tmp
-__pycache__
-
+pycloaking.egg-info
