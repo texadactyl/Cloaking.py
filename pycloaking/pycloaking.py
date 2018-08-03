@@ -2,13 +2,13 @@
 The following code provides a password-based security of a single file or
 a single file system archive file (E.g. .tar.gz).
 
-The source code is dependent on pycrypto, using the following capabilities:
+The source code is based on pycrypto, using the following capabilities:
 
     Password-based Key Derivation Function version 2 (PBKDF2)
     AES256 data cryptography in Cipher-Block Chaining (CBC) mode
     Hash-based Message Authentication Code (HMAC) function SHA512
 
-The starting point of this code is an example by Eli Bendersky.
+This code is based on an example by Eli Bendersky (used as a starting point).
 https://eli.thegreenplace.net/2010/06/25/aes-encryption-of-files-in-python-with-pycrypto/
 
 Pycrypto reference: https://www.dlitz.net/software/pycrypto/
@@ -159,6 +159,8 @@ def cloak_file(in_password,
             outfile.write(hmac.digest())
 
     # Done - return elapsed time
+    infile.close()
+    outfile.close()
     return time() - tstart
 
 def uncloak_file(in_password,
@@ -276,14 +278,14 @@ def uncloak_file(in_password,
                 print("DEBUG uncloak_file: computed size (possibly, padded):", computed_file_size)
 
     # Done - return elapsed time
+    infile.close()
+    outfile.close()
     return time() - tstart
 
 #======================================================================
 
 if __name__ == "__main__": # stand-alone self-imposed test
     PASSWORD = "Mary Had a Little Lamb"
-    CLEARTEXT_FILE_1 = "/tmp/nil"
-    CLEARTEXT_FILE_1 = "/etc/hosts"
     CLEARTEXT_FILE_1 = "/usr/bin/pandoc"
     CIPHERTEXT_FILE = "/tmp/cloaked"
     CLEARTEXT_FILE_2 = "/tmp/uncloaked.txt"
