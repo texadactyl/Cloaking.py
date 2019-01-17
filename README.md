@@ -64,5 +64,7 @@ The ciphertext file created by cloak_file() has the following layout:
 
 Feel free to contact richard.elkins@gmail.com for inquiries and issues, especially if you find any bugs. I'll respond as soon as I can.
 
-Richard Elkins Dallas, Texas, USA, 3rd Rock, Sol
+Richard Elkins 
+
+Dallas, Texas, USA, 3rd Rock, Sol, ...
 
