@@ -190,8 +190,8 @@ def uncloak_file(in_password,
     Raises:
         ValueError if chunksize mod 16 != 0
         IOError if something is wrong with input or output file
-        UserWarning if the input file as not created with cloak_file()
-            or is corrupted
+        UserWarning if the input file was not created with cloak_file()
+            or the input file is corrupted
     """
     # Take start time
     tstart = time()
