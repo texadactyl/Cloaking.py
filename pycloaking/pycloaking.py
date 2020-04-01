@@ -1,17 +1,6 @@
 '''
 The following code provides a password-based security of a single file or
 a single file system archive file (E.g. .tar.gz).
-
-The source code is based on pycrypto, using the following capabilities:
-
-    Password-based Key Derivation Function version 2 (PBKDF2)
-    AES256 data cryptography in Cipher-Block Chaining (CBC) mode
-    Hash-based Message Authentication Code (HMAC) function SHA512
-
-This code is based on an example by Eli Bendersky (used as a starting point).
-https://eli.thegreenplace.net/2010/06/25/aes-encryption-of-files-in-python-with-pycrypto/
-
-Pycrypto reference: https://www.dlitz.net/software/pycrypto/
 '''
 from os.path import getsize
 from os import urandom
