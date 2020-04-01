@@ -5,20 +5,28 @@ This project constitutes a file cloaking utility that provides password-based se
 * Storing backups of sensitive information on the Internet
 * Transporting sensitive information electronically (E.g. email) or manually (E.g. using a flash drive)
 
-This project is dependent on pycrypto, using:
+This project is dependent on pycryptodome (preferred) or pycrypto, using:
 
 * Password-based Key Derivation Function version 2 (PBKDF2)
 * AES256 data cryptography in Cipher-Block Chaining (CBC) mode
 * Hash-based Message Authentication Code (HMAC) function SHA512
 
-The Python project code started with an example by Eli Bendersky:
-https://eli.thegreenplace.net/2010/06/25/aes-encryption-of-files-in-python-with-pycrypto/
-
+Pycryptodome reference: https://www.pycryptodome.org/en/latest/src/api.html
 Pycrypto reference: https://www.dlitz.net/software/pycrypto/
 
 #### REQUIREMENTS
 
-* pycrypto
+* Python 3
+* pycryptodome (preferred) or pycrypto
+
+#### INSTALLATION ####
+
+Anaconda is not yet addressed.  Sorry.
+
+Download the github ZIP file.
+Unzip it.
+cd into the master folder.
+python3 setup.py install
 
 #### LICENSING
 
@@ -62,7 +70,7 @@ The ciphertext file created by cloak_file() has the following layout:
     ==========================
     Total overhead = 208 bytes
 
-Feel free to contact richard.elkins@gmail.com for inquiries and issues, especially if you find any bugs. I'll respond as soon as I can.
+Feel free to add an issue for inquiries and bugs. I'll respond as soon as I can.
 
 Richard Elkins 
 
