@@ -1,2 +1,1 @@
-from .pycloaking import cloak_file, uncloak_file
-
+from .cloaklib import cloak_file, uncloak_file

@@ -1,63 +1,60 @@
-from os.path import getsize
-from os import urandom, remove
-from pycloaking import cloak_file, uncloak_file
+import hashlib
+import tempfile
+from os.path import getsize, dirname
+from os import system
+from pycloaking import cloak_file, uncloak_file, mains
 
-PASSWORD = "Mary Had a Little Lamb"
-CLEARTEXT_FILE_1 = "/tmp/cleartext.txt"
-CIPHERTEXT_FILE = "/tmp/cloaked.tiff"
-CLEARTEXT_FILE_2 = "/tmp/uncloaked.txt"
+TEMPDIR = tempfile.gettempdir()
+HERE = dirname(__file__)
 CLEAR_FILE_SIZE = 100000000
 CLEAR_BLOCK_SIZE = 4096
+PASSWORD = "Mary_Had_a_Little_Lamb"
+CLEARTEXT_FILE_1 = HERE + "/cleartext_1.txt"
+CIPHERTEXT_FILE = TEMPDIR + "/cloaked.tif"
+CLEARTEXT_FILE_2 = TEMPDIR + "/uncloaked.txt"
 
-def try_cloaking(arg_path):
-    filesize1 = getsize(arg_path)
-    et = cloak_file(PASSWORD, arg_path, CIPHERTEXT_FILE)
-    print("[{}] cloak_file() elapsed time(s) = {:.2f}".format(arg_path, et))
+def hasher(file_path):
+    with open(file_path, encoding="UTF-8") as handle:
+        data = handle.read()
+        return hashlib.md5(data.encode("utf-8")).hexdigest()
+
+def test_and_compare():
+    et = cloak_file(PASSWORD, CLEARTEXT_FILE_1, CIPHERTEXT_FILE)
+    print("cloak_file elapsed time(s) = %.3f" %et)
     et = uncloak_file(PASSWORD, CIPHERTEXT_FILE, CLEARTEXT_FILE_2)
-    print("[{}] uncloak_file() elapsed time(s) = {:.2f}".format(arg_path, et))
-    print("[{}] Original file size = {}".format(arg_path, filesize1))
+    print("uncloak_file elapsed time(s) = %.3f" %et)
+    filesize1 = getsize(CLEARTEXT_FILE_1)
+    print("Original file size:", filesize1)
     cloakedsize = getsize(CIPHERTEXT_FILE)
-    print("[{}] Cloaked file size = {}".format(arg_path, cloakedsize))
+    print("Cloaked file size:", cloakedsize)
     filesize2 = getsize(CLEARTEXT_FILE_2)
-    print("[{}] Uncloaked file size = {}".format(arg_path, filesize2))
-    assert filesize1 == filesize2
-    with open(arg_path, 'rb') as infile1:
-        with open(CLEARTEXT_FILE_2, 'rb') as infile2:
-            nblocks = 0
-            byte_countdown = filesize1
-            while byte_countdown > 0:
-                nblocks += 1
-                if byte_countdown < CLEAR_BLOCK_SIZE:
-                    read_size = byte_countdown
-                else:
-                    read_size = CLEAR_BLOCK_SIZE
-                chunk1 = infile1.read(read_size)
-                chunk2 = infile2.read(read_size)
-                assert chunk1 == chunk2
-                byte_countdown -= read_size
-    print("[{}] Block bytesize = {}".format(arg_path, CLEAR_BLOCK_SIZE))
-    print("[{}] Blocks compared = {}".format(arg_path, nblocks))
-    print("[{}] Cloaked and uncloaked as expected".format(arg_path))
-    infile1.close()
-    infile2.close()
-    remove(CIPHERTEXT_FILE)
-    remove(CLEARTEXT_FILE_2)
+    print("Uncloaked file size:", filesize2)
+    hash_1 = hasher(CLEARTEXT_FILE_1)
+    hash_2 = hasher(CLEARTEXT_FILE_2)
+    assert hash_1 == hash_2
+    print("Success!")
 
-def test_all():
-    path_cleartext = CLEARTEXT_FILE_1
-    byte_countdown = CLEAR_FILE_SIZE
-    with open(path_cleartext, 'wb') as outfile:
-        while byte_countdown > 0:
-            if byte_countdown < CLEAR_BLOCK_SIZE:
-                write_size = byte_countdown
-            else:
-                write_size = CLEAR_BLOCK_SIZE
-            blk = urandom(write_size)
-            outfile.write(blk)
-            byte_countdown -= write_size
-    try_cloaking(path_cleartext)
-    remove(CLEARTEXT_FILE_1)
+def test_mains():
+    args = ["-p", PASSWORD, "-i", CLEARTEXT_FILE_1, "-o", CIPHERTEXT_FILE]
+    mains.main_cloak(args)
+    args = ["-p", PASSWORD, "-i", CIPHERTEXT_FILE, "-o", CLEARTEXT_FILE_2]
+    mains.main_uncloak(args)
+    hash_1 = hasher(CLEARTEXT_FILE_1)
+    hash_2 = hasher(CLEARTEXT_FILE_2)
+    assert hash_1 == hash_2
+    print("Success!")
+
+def test_cmdline():
+    cmd = "cloak -p " + PASSWORD + " -i " + CLEARTEXT_FILE_1 + " -o " + CIPHERTEXT_FILE
+    cloak_rc = system(cmd)
+    assert cloak_rc == 0
+    cmd = "uncloak -p " + PASSWORD + " -i " + CIPHERTEXT_FILE + " -o " + CLEARTEXT_FILE_2
+    uncloak_rc = system(cmd)
+    assert uncloak_rc == 0
+    hash_1 = hasher(CLEARTEXT_FILE_1)
+    hash_2 = hasher(CLEARTEXT_FILE_2)
+    assert hash_1 == hash_2
+    print("Success!")
 
 if __name__ == "__main__": # stand-alone main program
-    test_all()
-
+    test_cmdline()
