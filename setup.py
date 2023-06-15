@@ -2,7 +2,7 @@ from setuptools import *
 
 setup(
     name="pycloaking",
-    version="1.0",
+    version="1.1",
 	entry_points = {
 		"console_scripts": [
 		    "cloak  = pycloaking.mains:main_cloak",
